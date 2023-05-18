@@ -51,11 +51,11 @@ const CategoriesScreen = ({ navigation, data }) => {
       image: require("../../assets/icons/grocery.png"),
     },
   ];
-  // const handleOnRefresh = () => {
-  //   setRefreshing(true);
-  //   // fetchProduct();
-  //   // setRefreshing(false);
-  // };
+  const handleOnRefresh = () => {
+    setRefreshing(true);
+    // fetchProduct();
+    // setRefreshing(false);
+  };
 
   return (
     <View style={styles.container}>

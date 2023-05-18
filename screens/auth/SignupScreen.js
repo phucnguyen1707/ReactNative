@@ -11,7 +11,7 @@ import {
 import React, { useState } from "react";
 import { colors, network } from "../../constants";
 import CustomInput from "../../component/CustomInput";
-import header_logo from "../../assets/logo/logo.png";
+import header_logo from "../../assets/logo/Cat.png";
 import CustomButton from "../../component/CustomButton";
 import { Ionicons } from "@expo/vector-icons";
 import CustomAlert from "../../component/CustomAlert/CustomAlert";
@@ -93,7 +93,7 @@ const SignupScreen = ({ navigation }) => {
           </View>
           <View>
             <Text style={styles.screenNameParagraph}>
-              Create your account on MeowCare to access to overworld
+              Create your account on MeowCare to access
             </Text>
           </View>
         </View>
@@ -184,7 +184,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     resizeMode: "contain",
-    width: 80,
+    width: 160,
   },
   forgetPasswordContainer: {
     marginTop: 10,
@@ -229,5 +229,6 @@ const styles = StyleSheet.create({
   screenNameParagraph: {
     marginTop: 5,
     fontSize: 15,
+    justifyContent: "center",
   },
 });

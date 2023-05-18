@@ -13,7 +13,7 @@ const ProductCard = ({
 }) => {
   return (
     <TouchableOpacity
-      style={[styles.container, { width: cardSize === "large" ? "100%" : 150 }]}
+      style={[styles.container, { width: 360 }]}
       onPress={onPress}
     >
       <View style={styles.imageContainer}>
@@ -30,7 +30,7 @@ const ProductCard = ({
             style={styles.iconContainer}
             onPress={onPressSecondary}
           >
-            <Ionicons name="videocam-outline" size={20} color="white" />
+            <Ionicons name="camera-outline" size={20} color="white" />
           </TouchableOpacity>
         </View>
       </View>
@@ -59,15 +59,16 @@ const styles = StyleSheet.create({
     height: 140,
     borderRadius: 10,
     display: "flex",
-    flexDirection: "column",
+    flexDirection: "row",
     justifyContent: "flex-end",
     alignItems: "center",
     padding: 5,
     paddingBottom: 0,
   },
   productImage: {
-    height: 120,
-    width: 120,
+    height: 140,
+    width: 340,
+    resizeMode: "cover",
   },
   infoContainer: {
     width: "100%",
@@ -78,7 +79,7 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   secondaryTextSm: {
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: "bold",
   },
   primaryTextSm: {

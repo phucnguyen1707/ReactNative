@@ -12,7 +12,7 @@ import { database } from "../../firebase-config";
 import React, { useState } from "react";
 import { colors, network } from "../../constants";
 import CustomInput from "../../component/CustomInput";
-import header_logo from "../../assets/logo/logo.png";
+import header_logo from "../../assets/logo/Cat.png";
 import CustomButton from "../../component/CustomButton";
 import CustomAlert from "../../component/CustomAlert/CustomAlert";
 import ProgressDialog from "react-native-progress-dialog";
@@ -250,7 +250,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     resizeMode: "contain",
-    width: 80,
+    width: 130,
   },
   welcomeText: {
     fontSize: 42,

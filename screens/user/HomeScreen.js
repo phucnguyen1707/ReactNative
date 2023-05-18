@@ -14,7 +14,7 @@ import { Ionicons } from "@expo/vector-icons";
 import React, { useEffect, useState } from "react";
 import cartIcon from "../../assets/icons/cart_beg.png";
 import scanIcon from "../../assets/icons/scan_icons.png";
-import easybuylogo from "../../assets/logo/logo.png";
+import easybuylogo from "../../assets/logo/Cat.png";
 import { colors } from "../../constants";
 import CustomIconButton from "../../component/CustomButton/CustomButton";
 import ProductCard from "../../component/ProductCard/ProductCard";
@@ -28,8 +28,8 @@ import * as productService from "../../api-services/productService";
 import { getDatabase, ref, child, get } from "firebase/database";
 
 const slides = [
-  require("../../assets/images/banner.png"),
-  require("../../assets/images/banner.png"),
+  require("../../assets/images/banner1.png"),
+  require("../../assets/images/banner2.png"),
 ];
 const category = [
   {
@@ -177,15 +177,16 @@ const HomeScreen = ({ navigation }) => {
                   <ProductCard
                     image={item.image}
                     name={item.name}
-                    title={item.title}
+                    title={item.category}
+                    onPress={() => navigation.navigate("productdetail")}
                     // onPress={() => handleProductPress(item)}
                     // onPressSecondary={() => handleAddToCat(item)}
                   />
                 </View>
               )}
             />
-            <View style={styles.emptyView}></View>
           </View>
+          
         </ScrollView>
       </View>
     </View>
@@ -314,23 +315,11 @@ const styles = StyleSheet.create({
     height: 60,
     marginLeft: 10,
   },
-  emptyView: { width: 30 },
   productCardContainer: {
     paddingLeft: 10,
     display: "flex",
     flexDirection: "row",
     justifyContent: "flex-start",
-    alignItems: "center",
-    width: "100%",
-    height: 240,
-    marginLeft: 10,
-    paddingTop: 0,
-  },
-  productCardContainerEmpty: {
-    padding: 10,
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "center",
     alignItems: "center",
     width: "100%",
     height: 240,

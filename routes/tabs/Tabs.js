@@ -94,18 +94,6 @@ const Tabs = ({ navigation, route }) => {
         }}
       />
       <Tab.Screen
-        name="categories"
-        component={CategoriesScreen}
-        //initialParams={{ user: user }}
-        tabBarOptions={{
-          tabBarHideOnKeyboard: true,
-          style: {
-            position: "absolute",
-          },
-        }}
-      />
-      {}
-      <Tab.Screen
         name="user"
         component={UserProfileScreen}
         //initialParams={{ user: user }}
