@@ -53,8 +53,8 @@ const Routes = () => {
         <Stack.Screen name="addproduct" component={AddProductScreen} />
         <Stack.Screen name="viewproduct" component={ViewProductScreen} />
         <Stack.Screen name="editproduct" component={EditProductScreen} /> */}
-        <Stack.Screen name="tab" component={Tabs} />
-        <Stack.Screen name="productdetail" component={ProductDetailScreen} />
+        {/* <Stack.Screen name="tab" component={Tabs} />
+        <Stack.Screen name="productdetail" component={ProductDetailScreen} /> */}
         <Stack.Screen name="settings" component={Settings} />
         {/* <Stack.Screen name="cart" component={CartScreen} />
         <Stack.Screen name="checkout" component={CheckoutScreen} />

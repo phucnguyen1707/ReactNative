@@ -1,7 +1,7 @@
 import * as request from "../request";
 
-export const get = async (id='') => {
-  const path = "/MayBom/" + id;
+export const get = async () => {
+  const path = "/BomNgoai";
   const humidityApi = await request.getApi(path);
   return humidityApi;
 };
@@ -11,7 +11,7 @@ export const get = async (id='') => {
 //     request.setApi(path, content);
 // };
 
-export const update = async (content, id = "") => {
-  const path = "/MayBom/" + id;
+export const update = async (content) => {
+  const path = "/";
   request.updateApi(path, content);
 };

@@ -147,7 +147,7 @@ const ProductDetailScreen = ({ navigation, route }) => {
             <View style={styles.productNameContaier}>
               <Ionicons name="paw" size={25} color={colors.danger} />
               <Text style={styles.secondaryTextSm}> Mức Nước Dự Trữ : </Text>
-              <Text style={styles.counterCountText}>{laykq[2]}</Text>
+              <Text style={styles.counterCountText}>{laykq[1]}</Text>
             </View>
           </View>
 

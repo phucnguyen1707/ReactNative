@@ -25,11 +25,11 @@ const ProductList = ({ onPressEdit, onPressDelete }) => {
 
   const handlePress = (a) => {
     if (a == 1) {
-      SetHour(`${laykq[1]}:${laykq[7]}`);
+      SetHour(`${laykq[1]}:${laykq[8]}`);
     } else if (a == 2) {
-      SetHour(`${laykq[2]}:${laykq[8]}`);
+      SetHour(`${laykq[2]}:${laykq[9]}`);
     } else if (a == 3) {
-      SetHour(`${laykq[0]}:${laykq[6]}`);
+      SetHour(`${laykq[0]}:${laykq[7]}`);
     }
   };
 
@@ -100,10 +100,14 @@ const ProductList = ({ onPressEdit, onPressDelete }) => {
   };
 
   const SetManual = async () => {
-    const NutAn = await getTime.get("XacNhan");
-    await getTime.update({ XacNhan: NutAn === 1 ? 0 : 1 });
-    await getTime.update({ LevelSang: 1});
-
+    if (checked == 1) {
+      await getTime.update({ LevelThuCong: 1 });
+    } else if (checked == 2) {
+      await getTime.update({ LevelThuCong: 2 });
+    } else if (checked == 3) {
+      await getTime.update({ LevelThuCong: 3 });
+    }
+    await getTime.update({ XacNhan: 1 });
   };
 
   useEffect(() => {
@@ -142,11 +146,13 @@ const ProductList = ({ onPressEdit, onPressDelete }) => {
   const SetAuto = async () => {
     const hours = new Date().getHours(); //Current Hours
     const min = new Date().getMinutes(); //Current Minutes
-    const sec = new Date().getSeconds(); //Current Seconds
+    const sec = new Date().getSeconds();
+    console.log(hours, min, sec);
+
     if (
-      (laykq[1] == hours && laykq[7] == min && sec == "00") ||
-      (laykq[2] == hours && laykq[8] == min && sec == "00") ||
-      (laykq[0] == hours && laykq[6] == min && sec == "00")
+      (laykq[1] == hours && laykq[8] == min && sec == 0) ||
+      (laykq[2] == hours && laykq[9] == min && sec == 0) ||
+      (laykq[0] == hours && laykq[7] == min && sec == 0)
     ) {
       if (checked == 1) {
         await getTime.update({ LevelChieu: 1 });
@@ -171,6 +177,9 @@ const ProductList = ({ onPressEdit, onPressDelete }) => {
   useEffect(() => {
     fetchAPI();
   }, []);
+  const formatlaykq7 = `${laykq[7]}` < 10 ? "0" + `${laykq[7]}` : `${laykq[7]}`;
+  const formatlaykq8 = `${laykq[8]}` < 10 ? "0" + `${laykq[8]}` : `${laykq[8]}`;
+  const formatlaykq9 = `${laykq[9]}` < 10 ? "0" + `${laykq[9]}` : `${laykq[9]}`;
 
   return (
     <View style={styles.container}>
@@ -179,7 +188,7 @@ const ProductList = ({ onPressEdit, onPressDelete }) => {
           <Text style={styles.productTitle}>Thời Gian/ Mức Ăn Cho Mèo </Text>
           <TouchableOpacity>
             <Text style={styles.displayTimeEat}>
-              Giờ Real Time
+              Giờ Hiện Tại
               <Text style={styles.productInfoItemText}>{currentDate}</Text>
             </Text>
           </TouchableOpacity>
@@ -192,7 +201,7 @@ const ProductList = ({ onPressEdit, onPressDelete }) => {
             <Text style={styles.displayTimeEat}>
               Giờ Sáng{" "}
               <Text style={styles.productInfoItemText}>
-                {laykq[1]}:{laykq[7]}
+                {laykq[1]}:{formatlaykq8}
               </Text>
             </Text>
           </TouchableOpacity>
@@ -206,7 +215,7 @@ const ProductList = ({ onPressEdit, onPressDelete }) => {
               {" "}
               Giờ Trưa :
               <Text style={styles.productInfoItemText}>
-                {laykq[2]}:{laykq[8]}
+                {laykq[2]}:{formatlaykq9}
               </Text>
             </Text>
           </TouchableOpacity>
@@ -220,7 +229,7 @@ const ProductList = ({ onPressEdit, onPressDelete }) => {
               {" "}
               Giờ Chiều :
               <Text style={styles.productInfoItemText}>
-                {laykq[0]}:{laykq[6]}{" "}
+                {laykq[0]}:{formatlaykq7}{" "}
               </Text>
             </Text>
           </TouchableOpacity>

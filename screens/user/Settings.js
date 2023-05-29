@@ -20,7 +20,6 @@ import SetTurboWater from "../../component/ProductList/SetTurbo";
 import * as getBom from "../../api-services/bomnuoc";
 import * as getVoice from "../../api-services/thuam";
 
-
 const ViewProductScreen = ({ navigation, route }) => {
   const [laykq, setlaykq] = useState({});
 
@@ -32,56 +31,12 @@ const ViewProductScreen = ({ navigation, route }) => {
     fetchAPI();
   }, []);
 
-
-
   const handleBomCao = async () => {
-    const currentCao = await getBom.get("Cao");
-    const new1 = currentCao === 1 ? 0 : 1;
-    await getBom.update({ Cao: new1 });
-
-    // Check if new1 equals to 1, then set TrungBinh to 0
-    if (new1 === 1) {
-      const currentTrungBinh = await getBom.get("TrungBinh");
-      if (currentTrungBinh === 1) {
-        await getBom.update({ TrungBinh: 0 });
-      }
-    }
-    if (new1 === 1) {
-      const currentTat = await getBom.get("Tat");
-      if (currentTat === 0) {
-        await getBom.update({ Tat: 1 });
-      }
-    }
+    const currentShut = await getBom.get();
+    console.log(currentShut);
+    const new1 = currentShut === 1 ? 0 : 1;
+    await getBom.update({ BomNgoai :new1});
   };
-
-  const handleBomTat = async () => {
-    const currentTat = await getBom.get("Tat");
-    const new2 = currentTat === 1 ? 0 : 1;
-    await getBom.update({ Tat: new2 });
-
-    if (new2 === 0) {
-      await getBom.update({ Cao: 0, TrungBinh: 0 });
-    }
-  };
-
-  const handleBomTrungBinh = async () => {
-    const currentTrungBinh = await getBom.get("TrungBinh");
-    const new3 = currentTrungBinh === 1 ? 0 : 1;
-    await getBom.update({ TrungBinh: new3 });
-    if (new3 === 1) {
-      const currentCao = await getBom.get("Cao");
-      if (currentCao === 1) {
-        await getBom.update({ Cao: 0 });
-      }
-    }
-    if (new3 === 1) {
-      const currentTat = await getBom.get("Tat");
-      if (currentTat === 0) {
-        await getBom.update({ Tat: 1 });
-      }
-    }
-  };
-
 
   return (
     <View style={styles.container}>
@@ -118,15 +73,11 @@ const ViewProductScreen = ({ navigation, route }) => {
         style={{ flex: 1, width: "100%" }}
         showsVerticalScrollIndicator={false}
       >
-        <ProductList
-        />
+        <ProductList />
         <SetTimeFood />
         <SetTurboWater
           onHigh={() => {
             handleBomCao();
-          }}
-          onShutDown={() => {
-            handleBomTat();
           }}
         />
       </ScrollView>

@@ -3,22 +3,21 @@ import React from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 import { colors } from "../../constants";
 
-const ProductList = ({
-  onHigh,
-  onMedium,
-  onShutDown,
-}) => {
+const ProductList = ({ onHigh }) => {
   return (
     <View style={styles.container}>
       <View style={styles.buttonContainer}>
         <Text style={styles.productTitle}>Tắt / Mở Bơm Nước </Text>
 
-
         <TouchableOpacity
           style={[styles.actionButton, { backgroundColor: colors.primary }]}
           onPress={onHigh}
         >
-          <MaterialIcons name="add-circle-outline" size={20} color={colors.white} />
+          <MaterialIcons
+            name="add-circle-outline"
+            size={20}
+            color={colors.white}
+          />
         </TouchableOpacity>
 
         {/* <TouchableOpacity
@@ -27,15 +26,6 @@ const ProductList = ({
         >
           <MaterialIcons name="minimize" size={20} color={colors.white} />
         </TouchableOpacity> */}
-
-        <TouchableOpacity
-          style={[styles.actionButton, { backgroundColor: colors.danger }]}
-          onPress={onShutDown}
-        >
-          <MaterialIcons name="power-settings-new" size={20} color={colors.white} />
-
-        </TouchableOpacity>
-
       </View>
     </View>
   );
@@ -75,12 +65,11 @@ const styles = StyleSheet.create({
     paddingLeft: 5,
   },
   buttonContainer: {
-    width:"100%",
+    width: "100%",
     display: "flex",
     flexDirection: "row",
-    justifyContent:"space-evenly",
+    justifyContent: "space-evenly",
     alignItems: "center",
-
   },
   actionButton: {
     display: "flex",

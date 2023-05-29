@@ -70,7 +70,7 @@ const LoginScreen = ({ navigation }) => {
     if (result) {
       alert(`đăng nhập thành công với ${email}`);
       setIsloading(false);
-      // navigation.replace("tab", { user: email }); // naviagte to User Dashboard
+      navigation.navigate("tab"); // naviagte to User Dashboard
     } else {
       alert(error.message);
     }

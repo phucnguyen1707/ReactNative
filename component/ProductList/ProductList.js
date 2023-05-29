@@ -32,28 +32,20 @@ const ProductList = ({
 
   const handlePlayBtn = async () => {
     const currentPlaySound = await getVoice.get("PlaySound");
-    const TextPlaySound = await getVoice.get("DangGoiMeo");
     const newPlaySound = currentPlaySound === 1 ? 0 : 1;
-    const newTextSound =
-      TextPlaySound === "Ngừng Phát" ? "Đang Phát" : "Ngừng Phát";
     await getVoice.update({ PlaySound: newPlaySound });
-    await getVoice.update({ DangGoiMeo: newTextSound });
     if (newPlaySound === 1) {
       const currentRecSound = await getVoice.get("RecSound");
-      if (currentRecSound === 1) {
+      if (currentRecSound === 2) {
         await getVoice.update({ RecSound: 0 });
       }
     }
   };
   const handleRecordBtn = async () => {
     const currentRecSound = await getVoice.get("RecSound");
-    const TextRecSound = await getVoice.get("DangGhiAm");
-    const newRecSound = currentRecSound === 1 ? 0 : 1;
-    const newTextRecSound =
-      TextRecSound === "Ngừng Ghi Âm" ? "Đang Ghi Âm" : "Ngừng Ghi Âm";
-    await getVoice.update({ DangGhiAm: newTextRecSound });
+    const newRecSound = currentRecSound === 2 ? 0 : 2;
     await getVoice.update({ RecSound: newRecSound });
-    if (newRecSound === 1) {
+    if (newRecSound === 2) {
       const currentPlaySound = await getVoice.get("PlaySound");
       if (currentPlaySound === 1) {
         await getVoice.update({ PlaySound: 0 });
